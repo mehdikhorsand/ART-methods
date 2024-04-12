@@ -11,16 +11,22 @@ import tools.TCWriter;
 import source.TCRunner;
 
 public class FrequencyTransform {
-    TestCase testcase;
+    public TestCase testcase;
     public ArrayList<String> method_invocation_sequence;
     public ArrayList<Integer> frequency_vector;
-    public int clustering_number = Settings.max_clustering_number;
+    //todo: remove clustering number field
 
     public FrequencyTransform(TestCase tc) {
         this.testcase = tc;
         set_method_invocation_sequence();
         this.frequency_vector = get_frequency_vector(method_invocation_sequence,
                 0, method_invocation_sequence.size() - 1);
+        // todo: remove this code
+        int sum = 0;
+        for(Integer i : frequency_vector)
+            sum += i;
+        if(sum == 0)
+            System.out.println("000000");
     }
 
     private void set_method_invocation_sequence() {

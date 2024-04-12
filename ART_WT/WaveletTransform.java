@@ -7,9 +7,9 @@ import tools.Distance;
 import java.util.ArrayList;
 
 public class WaveletTransform {
-    TestCase testcase;
-    ArrayList<Integer> A;
-    ArrayList<Integer> B = new ArrayList<>();
+    public TestCase testcase;
+    public ArrayList<Integer> A;
+    public ArrayList<Integer> B = new ArrayList<>();
 
     public WaveletTransform(TestCase testcase) {
         this.testcase = testcase;

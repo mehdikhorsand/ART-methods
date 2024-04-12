@@ -6,7 +6,6 @@ import randomTestcase.TestCase;
 import java.util.ArrayList;
 
 public class ART_TFC extends SelectionMethod {
-//    frequency transform distance
     static ArrayList<TrisectionFrequencyConversion> executed_set = new ArrayList<>();
 
     @Override

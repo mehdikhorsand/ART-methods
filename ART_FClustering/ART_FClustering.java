@@ -1,15 +1,17 @@
-package methods.ART_FT;
+package methods.ART_FClustering;
 
 import main.SelectionMethod;
 import randomTestcase.TestCase;
+import tools.MyRandom;
 
 import java.util.ArrayList;
 
-public class ART_FT  extends SelectionMethod {
+public class ART_FClustering extends SelectionMethod {
     static ArrayList<FrequencyTransform> executed_set = new ArrayList<>();
-
+    static ArrayList<FrequencyTransform> executed_representative = new ArrayList<>();
     @Override
     public TestCase best_candidate(TestCase[] candidate_set) {
+        update_executive_representative_set();
         FrequencyTransform[] candidates_ft = new FrequencyTransform[candidate_set.length];
         for(int i=0; i<candidate_set.length; i++)
             candidates_ft[i] = new FrequencyTransform(candidate_set[i]);
@@ -29,16 +31,33 @@ public class ART_FT  extends SelectionMethod {
     @Override
     public void reset() {
         executed_set = new ArrayList<>();
+        executed_representative = new ArrayList<>();
     }
 
     public static double get_tc_min_distance(FrequencyTransform tc_ft) {
         double min_distance = (int) Double.POSITIVE_INFINITY;
-        for(FrequencyTransform eft : executed_set) {
+        for(FrequencyTransform eft : executed_representative) {
             double distance = FrequencyTransform.get_distance(eft, tc_ft);
+            if(distance > 0)
+                System.out.println();
             if(distance < min_distance){
                 min_distance = distance;
             }
         }
         return min_distance;
+    }
+
+    public static void update_executive_representative_set() {
+        executed_representative = new ArrayList<>();
+        if(executed_set.size() <= Clustering.get_suitable_k(executed_set.size())) {
+            executed_representative.addAll(executed_set);
+        }
+        else {
+            // todo: cluster executed_set to k clusters
+            ArrayList<Cluster> clusters = Clustering.clustering_analysis(new ArrayList<>(executed_set));
+            // todo: select a random testcase from each cluster and add it to executed_representative
+            for(Cluster cluster : clusters)
+                executed_representative.add(cluster.testcases.get(MyRandom.getInt(0, cluster.testcases.size()-1)));
+        }
     }
 }

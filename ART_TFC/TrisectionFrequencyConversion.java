@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class TrisectionFrequencyConversion {
-    TestCase testcase;
-    ArrayList<String> MIS; // method invocation sequence
-    ArrayList<Integer> A;
-    ArrayList<Integer> B;
-    ArrayList<Integer> C;
+    public TestCase testcase;
+    public ArrayList<String> MIS; // method invocation sequence
+    public ArrayList<Integer> A;
+    public ArrayList<Integer> B;
+    public ArrayList<Integer> C;
     public TrisectionFrequencyConversion(TestCase testcase) {
         this.testcase = testcase;
         FrequencyTransform ft = new FrequencyTransform(testcase);
