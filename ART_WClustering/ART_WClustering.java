@@ -11,6 +11,7 @@ public class ART_WClustering extends SelectionMethod {
     static ArrayList<WaveletTransform> executed_representative = new ArrayList<>();
     @Override
     public TestCase best_candidate(TestCase[] candidate_set) {
+
         update_executive_representative_set();
         WaveletTransform[] candidates_ft = new WaveletTransform[candidate_set.length];
         for(int i=0; i<candidate_set.length; i++)
@@ -32,6 +33,10 @@ public class ART_WClustering extends SelectionMethod {
     public void reset() {
         executed_set = new ArrayList<>();
         executed_representative = new ArrayList<>();
+        if(timer > 0) {
+            f_times.add(timer);
+            timer = 0;
+        }
     }
 
     public static double get_tc_min_distance(WaveletTransform tc_ft) {
@@ -59,5 +64,18 @@ public class ART_WClustering extends SelectionMethod {
             for(Cluster cluster : clusters)
                 executed_representative.add(cluster.testcases.get(MyRandom.getInt(0, cluster.testcases.size()-1)));
         }
+    }
+
+    public static ArrayList<Integer> f_times = new ArrayList<>();
+    public static int timer = 0;
+
+    @Override
+    public void add_execution_time(double execution_time) {
+        timer += (int) execution_time;
+    }
+
+    @Override
+    public int get_f_time(int index) {
+        return f_times.get(index);
     }
 }

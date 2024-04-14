@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class ART_WT  extends SelectionMethod {
 //    wavelet transform distance
     static ArrayList<WaveletTransform> executed_set = new ArrayList<>();
+    public static ArrayList<Integer> f_times = new ArrayList<>();
+    public static int timer = 0;
 
     @Override
     public TestCase best_candidate(TestCase[] candidate_set) {
@@ -30,6 +32,10 @@ public class ART_WT  extends SelectionMethod {
     @Override
     public void reset() {
         executed_set = new ArrayList<>();
+        if(timer > 0) {
+            f_times.add(timer);
+            timer = 0;
+        }
     }
 
     public static double get_tc_min_distance(WaveletTransform tc_wt) {
@@ -41,5 +47,15 @@ public class ART_WT  extends SelectionMethod {
             }
         }
         return min_distance;
+    }
+
+    @Override
+    public void add_execution_time(double execution_time) {
+        timer += (int) execution_time;
+    }
+
+    @Override
+    public int get_f_time(int index) {
+        return f_times.get(index);
     }
 }
