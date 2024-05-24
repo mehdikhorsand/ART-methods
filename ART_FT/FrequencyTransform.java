@@ -3,40 +3,25 @@ package methods.ART_FT;
 import java.util.ArrayList;
 import java.util.Objects;
 import randomTestcase.TestCase;
-import main.Settings;
 import tools.SourceDetector;
-import tools.Terminal;
 import tools.Distance;
-import tools.TCWriter;
-import source.TCRunner;
+
 
 public class FrequencyTransform {
     public TestCase testcase;
     public ArrayList<String> method_invocation_sequence;
     public ArrayList<Integer> frequency_vector;
-    //todo: remove clustering number field
 
     public FrequencyTransform(TestCase tc) {
         this.testcase = tc;
         set_method_invocation_sequence();
         this.frequency_vector = get_frequency_vector(method_invocation_sequence,
                 0, method_invocation_sequence.size() - 1);
-        // todo: remove this code
-        int sum = 0;
-        for(Integer i : frequency_vector)
-            sum += i;
-        if(sum == 0)
-            System.out.println("000000");
     }
 
     private void set_method_invocation_sequence() {
-        String src_path = Settings.temp + Settings.test_file_name + Settings.testcase_format;
-        String des_path = Settings.temp + Settings.output + Settings.testcase_format;
-        TCWriter.write_into_txt_format(src_path, testcase);
-        new TCRunner(src_path, des_path);
-        method_invocation_sequence = TCRunner.method_invocation_sequence;
-        Terminal.rm(src_path);
-        Terminal.rm(des_path);
+        testcase.run();
+        method_invocation_sequence = testcase.method_invocation_sequence.read_list();
     }
 
     public ArrayList<Integer> get_frequency_vector(ArrayList<String> MIS, int from, int to) {

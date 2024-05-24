@@ -42,8 +42,6 @@ public class ART_FClustering extends SelectionMethod {
         double min_distance = (int) Double.POSITIVE_INFINITY;
         for(FrequencyTransform eft : executed_representative) {
             double distance = FrequencyTransform.get_distance(eft, tc_ft);
-            if(distance > 0)
-                System.out.println();
             if(distance < min_distance){
                 min_distance = distance;
             }

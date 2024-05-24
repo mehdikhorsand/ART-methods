@@ -43,8 +43,8 @@ public class ART_WClustering extends SelectionMethod {
         double min_distance = (int) Double.POSITIVE_INFINITY;
         for(WaveletTransform eft : executed_representative) {
             double distance = WaveletTransform.get_distance(eft, tc_ft);
-            if(distance > 0)
-                System.out.println();
+//            if(distance > 0)
+//                System.out.println();
             if(distance < min_distance){
                 min_distance = distance;
             }

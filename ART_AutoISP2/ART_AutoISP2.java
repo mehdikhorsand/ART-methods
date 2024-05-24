@@ -1,9 +1,6 @@
 package methods.ART_AutoISP2;
 
-import main.SelectionMethod;
 import methods.ART_AutoISP.ART_AutoISP;
-import methods.ART_AutoISP_C.ART_AutoISP_C;
-import methods.ART_AutoISP_C.ConditionEdgePairCoverage;
 import randomTestcase.TestCase;
 import tools.AutoISP.*;
 

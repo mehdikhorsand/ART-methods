@@ -42,8 +42,8 @@ public class ART_TFClustering extends SelectionMethod {
         double min_distance = (int) Double.POSITIVE_INFINITY;
         for(TrisectionFrequencyConversion eft : executed_representative) {
             double distance = TrisectionFrequencyConversion.get_distance(eft, tc_ft);
-            if(distance > 0)
-                System.out.println();
+//            if(distance > 0)
+//                System.out.println();
             if(distance < min_distance){
                 min_distance = distance;
             }

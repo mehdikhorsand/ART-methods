@@ -3,7 +3,6 @@ package methods.RT;
 import main.SelectionMethod;
 import randomTestcase.TestCase;
 import tools.MyRandom;
-
 import java.util.ArrayList;
 
 
@@ -32,5 +31,10 @@ public class RT extends SelectionMethod {
     @Override
     public int get_f_time(int index) {
         return f_times.get(index);
+    }
+
+    @Override
+    public boolean is_running_all_candidates() {
+        return false;
     }
 }

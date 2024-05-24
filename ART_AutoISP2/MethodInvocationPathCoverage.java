@@ -1,7 +1,6 @@
 package methods.ART_AutoISP2;
 
 import randomTestcase.TestCase;
-import source.TCRunner;
 import tools.activity.Action;
 import tools.AutoISP.*;
 
@@ -16,7 +15,7 @@ public class MethodInvocationPathCoverage extends TestCaseRepresentation {
     }
 
     public ArrayList<ArrayList<Action>> get_paths() {
-        return TCRunner.method_invocation_paths;
+        return testcase.method_invocation_paths.read_list();
     }
 
     public void set_characteristics() {

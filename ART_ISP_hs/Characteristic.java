@@ -31,10 +31,11 @@ public class Characteristic {
     }
 
     public static ArrayList<ArrayList<Integer>> get_testcase_isp_result(TestCase tc) {
+        // todo : uncomment this lines
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        for (OrderInput order : tc.orders) {
-            res = ArrayOperations.sum(res, get_orders_isp_result(order));
-        }
+//        for (OrderInput order : tc.orders) {
+//            res = ArrayOperations.sum(res, get_orders_isp_result(order));
+//        }
         return res;
     }
 
