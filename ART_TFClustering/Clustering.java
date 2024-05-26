@@ -1,6 +1,7 @@
 package methods.ART_TFClustering;
 
 import main.Settings;
+import tools.ExecutionAnalysis;
 import tools.MyRandom;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class Clustering {
                 }
                 if(tc_ft.clustering_number != nearestCluster){
                     // cluster of one testcase has changed
-                    System.out.println(tc_ft + "\nchanging cluster form " + tc_ft.clustering_number + " to " + nearestCluster);
+                    ExecutionAnalysis.write(tc_ft + "\nchanging cluster from " + tc_ft.clustering_number + " to " + nearestCluster);
                     change = true;
                     // moving to the new cluster
                     if(tc_ft.clustering_number != -1)

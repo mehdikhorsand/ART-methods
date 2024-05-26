@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ART_FClustering extends SelectionMethod {
     static ArrayList<FrequencyTransform> executed_set = new ArrayList<>();
     static ArrayList<FrequencyTransform> executed_representative = new ArrayList<>();
+
     @Override
     public TestCase best_candidate(TestCase[] candidate_set) {
         update_executive_representative_set();
